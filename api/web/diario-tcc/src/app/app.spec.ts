@@ -16,10 +16,10 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render appbar title', () => {
+  it('should render app title', () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.appbar__title')?.textContent).toContain('Diário TCC');
+    expect(compiled.querySelector('mat-toolbar span')?.textContent).toContain('TransporteX');
   });
 });
