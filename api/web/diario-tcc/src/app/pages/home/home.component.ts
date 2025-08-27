@@ -1,15 +1,17 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { Entry } from '../../models/entry.model';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgIf],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  entry = {
+  entry: Entry = {
     situacao: '',
     sentimentos: '',
     pensamentos: '',

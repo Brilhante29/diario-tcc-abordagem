@@ -5,8 +5,8 @@
     <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
   </button>
   <div class="appbar__title">Diário TCC</div>
-  <button class="iconbtn ml-auto" aria-label="Alternar tema" (click)="toggleTheme()">
-    <span class="material-icons">{{ isDark() ? 'light_mode' : 'dark_mode' }}</span>
+  <button class="iconbtn ml-auto" aria-label="Alternar tema" (click)="theme.toggle()">
+    <span class="material-icons">{{ theme.isDark() ? 'light_mode' : 'dark_mode' }}</span>
   </button>
 </header>
 
@@ -24,16 +24,10 @@
     <button class="nav__item" routerLink="/historico" routerLinkActive="active" (click)="closeDrawer()">
       <span class="nav__icon">🗂️</span><span>Histórico</span>
     </button>
-    <button class="nav__item" routerLink="/analises" routerLinkActive="active" (click)="closeDrawer(); showToast('Em breve ✨')">
+    <button class="nav__item" routerLink="/analises" routerLinkActive="active" (click)="showSoon()">
       <span class="nav__icon">📊</span><span>Análises gerais</span>
     </button>
   </nav>
   <footer class="drawer__footer small">Conte com calma. Você está em segurança.</footer>
 </aside>
 <div class="scrim" [class.show]="drawerOpen()" (click)="closeDrawer()" aria-hidden="true"></div>
-
-<main id="main" class="container" role="main" tabindex="-1">
-  <router-outlet></router-outlet>
-</main>
-
-<div class="toast" role="status" aria-live="polite" [class.show]="toast()">{{ toast() }}</div>
