@@ -2,12 +2,17 @@ import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { AppComponent } from './app.component';
+import { AuthService } from './core/services/auth.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
-      providers: [provideZonelessChangeDetection(), provideRouter([])]
+      providers: [
+        provideZonelessChangeDetection(),
+        provideRouter([]),
+        { provide: AuthService, useValue: { isLoggedIn: () => true } }
+      ]
     }).compileComponents();
   });
 
