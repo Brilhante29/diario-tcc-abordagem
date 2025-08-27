@@ -1,0 +1,5 @@
+<app-navigation *ngIf="auth.isLoggedIn()"></app-navigation>
+<main id="main" class="container" role="main" tabindex="-1">
+  <router-outlet></router-outlet>
+</main>
+<app-toast></app-toast>

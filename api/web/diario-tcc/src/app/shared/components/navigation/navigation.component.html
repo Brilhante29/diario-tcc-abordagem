@@ -1,0 +1,35 @@
+<a class="skiplink" href="#main">Pular para o conteúdo</a>
+
+<mat-toolbar color="primary" class="appbar">
+  <button mat-icon-button aria-label="Abrir menu" (click)="openDrawer()" [attr.aria-expanded]="drawerOpen()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="appbar__title">Diário TCC</span>
+  <span class="spacer"></span>
+  <button mat-icon-button aria-label="Alternar tema" (click)="theme.toggle()">
+    <mat-icon>{{ theme.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+  <button mat-button *ngIf="auth.isLoggedIn()" (click)="logout()">Sair</button>
+</mat-toolbar>
+
+<aside class="drawer" role="dialog" aria-modal="true" aria-label="Menu lateral" [class.open]="drawerOpen()">
+  <div class="drawer__header">
+    <div class="brand">🌱 Seu espaço seguro</div>
+    <button class="iconbtn" aria-label="Fechar menu" (click)="closeDrawer()">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <nav class="drawer__nav">
+    <a mat-list-item class="nav__item" routerLink="/home" routerLinkActive="active" (click)="closeDrawer()">
+      <span class="nav__icon">🏠</span><span>Home</span>
+    </a>
+    <a mat-list-item class="nav__item" routerLink="/historico" routerLinkActive="active" (click)="closeDrawer()">
+      <span class="nav__icon">🗂️</span><span>Histórico</span>
+    </a>
+    <a mat-list-item class="nav__item" routerLink="/analises" routerLinkActive="active" (click)="showSoon()">
+      <span class="nav__icon">📊</span><span>Análises gerais</span>
+    </a>
+  </nav>
+  <footer class="drawer__footer small">Conte com calma. Você está em segurança.</footer>
+</aside>
+<div class="scrim" [class.show]="drawerOpen()" (click)="closeDrawer()" aria-hidden="true"></div>
