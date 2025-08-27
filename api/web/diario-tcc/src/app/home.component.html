@@ -1,0 +1,25 @@
+<section aria-labelledby="home-title">
+  <h1 id="home-title" class="section-title">📔 Externalização</h1>
+  <div class="card">
+    <label for="situacao">Situação vivida</label>
+    <textarea id="situacao" [(ngModel)]="entry.situacao" placeholder="Descreva a situação..."></textarea>
+
+    <label for="sentimentos">Como você se sentiu?</label>
+    <textarea id="sentimentos" [(ngModel)]="entry.sentimentos" placeholder="Emoções, sensações físicas..."></textarea>
+
+    <label for="pensamentos">Quais foram os pensamentos?</label>
+    <textarea id="pensamentos" [(ngModel)]="entry.pensamentos" placeholder="Pensamentos automáticos..."></textarea>
+
+    <label for="fatos">Em quais fatos esses pensamentos se baseiam?</label>
+    <textarea id="fatos" [(ngModel)]="entry.fatos" placeholder="Evidências observáveis..."></textarea>
+
+    <label for="resolucao">Você pode resolver a situação? Se sim, como?</label>
+    <textarea id="resolucao" [(ngModel)]="entry.resolucao" placeholder="Plano prático..."></textarea>
+
+    <label for="observacoes">O que tem observado nos seus pensamentos? (padrões, gatilhos)</label>
+    <textarea id="observacoes" [(ngModel)]="entry.observacoes" placeholder="Padrões, gatilhos, contextos..."></textarea>
+
+    <button class="btn" (click)="save()">Salvar entrada</button>
+    <div class="small" style="margin-top:10px;color:#1b6a60;" *ngIf="feedback()">Entrada salva com carinho. 💚</div>
+  </div>
+</section>

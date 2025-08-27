@@ -1,25 +1,39 @@
-<mat-sidenav-container class="app-container">
-  <mat-sidenav #sidenav mode="side">
-    <mat-nav-list>
-      <a mat-list-item href="#">Home</a>
-      <a mat-list-item href="#">Histórico</a>
-      <a mat-list-item href="#">Análises</a>
-    </mat-nav-list>
-  </mat-sidenav>
+<a class="skiplink" href="#main">Pular para o conteúdo</a>
 
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button mat-icon-button (click)="sidenav.toggle()" aria-label="Menu">
-        <span class="material-icons">menu</span>
-      </button>
-      <span>TransporteX</span>
-      <span class="spacer"></span>
-    </mat-toolbar>
+<header class="appbar" role="banner">
+  <button class="iconbtn" aria-label="Abrir menu" (click)="openDrawer()" [attr.aria-expanded]="drawerOpen()">
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <div class="appbar__title">Diário TCC</div>
+  <button class="iconbtn ml-auto" aria-label="Alternar tema" (click)="toggleTheme()">
+    <span class="material-icons">{{ isDark() ? 'light_mode' : 'dark_mode' }}</span>
+  </button>
+</header>
 
-    <section class="hero">
-      <h1>Conecte-se ao futuro do transporte</h1>
-      <p>Rastreamento, segurança e eficiência em cada viagem.</p>
-      <button mat-raised-button color="accent">Começar</button>
-    </section>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<aside class="drawer" role="dialog" aria-modal="true" aria-label="Menu lateral" [class.open]="drawerOpen()">
+  <div class="drawer__header">
+    <div class="brand">🌱 Seu espaço seguro</div>
+    <button class="iconbtn" aria-label="Fechar menu" (click)="closeDrawer()">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <nav class="drawer__nav">
+    <button class="nav__item" routerLink="/home" routerLinkActive="active" (click)="closeDrawer()">
+      <span class="nav__icon">🏠</span><span>Home</span>
+    </button>
+    <button class="nav__item" routerLink="/historico" routerLinkActive="active" (click)="closeDrawer()">
+      <span class="nav__icon">🗂️</span><span>Histórico</span>
+    </button>
+    <button class="nav__item" routerLink="/analises" routerLinkActive="active" (click)="closeDrawer(); showToast('Em breve ✨')">
+      <span class="nav__icon">📊</span><span>Análises gerais</span>
+    </button>
+  </nav>
+  <footer class="drawer__footer small">Conte com calma. Você está em segurança.</footer>
+</aside>
+<div class="scrim" [class.show]="drawerOpen()" (click)="closeDrawer()" aria-hidden="true"></div>
+
+<main id="main" class="container" role="main" tabindex="-1">
+  <router-outlet></router-outlet>
+</main>
+
+<div class="toast" role="status" aria-live="polite" [class.show]="toast()">{{ toast() }}</div>
