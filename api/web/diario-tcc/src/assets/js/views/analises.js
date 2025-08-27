@@ -1,0 +1,8 @@
+export function AnalisesView(root){
+  root.innerHTML = `
+    <section aria-labelledby="ana-title">
+      <h1 id="ana-title" class="section-title">📊 Análises gerais</h1>
+      <div class="card">Em breve.</div>
+    </section>
+  `;
+}
